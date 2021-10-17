@@ -3,6 +3,8 @@ import { getData } from '../helpers/api';
 
 function useFetchMore() {
     const [posts, setPosts] = useState([]);
+    console.log('>>> useFetchMore', posts);
+    
 
     async function fetchData() {
         const result = await getData();
@@ -11,7 +13,10 @@ function useFetchMore() {
 
     async function fetchMoreData() {
         const result = await getData();
-        setPosts(prev => [ ...prev, ...result])
+
+        console.log('>>> fetchMoreData', posts);
+
+        setPosts(prev => [...prev, ...result])
     }
 
     return {
